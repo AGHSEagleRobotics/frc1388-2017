@@ -24,22 +24,22 @@ Toggle::Toggle(): Command() {
 
 // Called just before this Command runs the first time
 void Toggle::Initialize() {
-
+	Robot::driveTrain->isSwitched = !Robot::driveTrain->isSwitched;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void Toggle::Execute() {
-
+	//empty
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool Toggle::IsFinished() {
-    return false;
+    return true;
 }
 
 // Called once after isFinished returns true
 void Toggle::End() {
-
+	//empty
 }
 
 // Called when another command which requires one or more of the same
