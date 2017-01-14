@@ -15,6 +15,7 @@
 #include "SmartDashboard/SmartDashboard.h"
 #include "Commands/AutonomousCommand.h"
 #include "Commands/Drive.h"
+#include "Commands/FeedShooter.h"
 #include "Commands/Toggle.h"
 
 
