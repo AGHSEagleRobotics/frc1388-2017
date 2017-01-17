@@ -24,26 +24,27 @@ Fire::Fire(): Command() {
 
 // Called just before this Command runs the first time
 void Fire::Initialize() {
-
+	//Probably nothing.
 }
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
-
+	//Run the motors, using a current power constant
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool Fire::IsFinished() {
-    return false;
+    //Check whether both buttons are still pressed.
+	return false;
 }
 
 // Called once after isFinished returns true
 void Fire::End() {
-
+	//Set motors to zero.
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void Fire::Interrupted() {
-
+	End();
 }
