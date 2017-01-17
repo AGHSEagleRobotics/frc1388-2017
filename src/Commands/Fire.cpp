@@ -29,7 +29,7 @@ void Fire::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
-	//Run the motors, using a current power constant
+	//Run the motors, using a current power constant which is found at Robot::shooter->shootPower
 }
 
 // Make this return true when this Command no longer needs to run execute()

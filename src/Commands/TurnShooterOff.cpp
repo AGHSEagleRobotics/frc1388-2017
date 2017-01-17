@@ -23,7 +23,7 @@ TurnShooterOff::TurnShooterOff(): Command() {
 
 // Called just before this Command runs the first time
 void TurnShooterOff::Initialize() {
-
+	Robot::shooter->shootPower = 0.0;
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -33,7 +33,7 @@ void TurnShooterOff::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool TurnShooterOff::IsFinished() {
-    return false;
+    return true;
 }
 
 // Called once after isFinished returns true
