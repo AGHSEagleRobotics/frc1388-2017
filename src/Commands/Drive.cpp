@@ -34,7 +34,7 @@ double Drive::Deadband(double input){
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
-	RobotMap::driveTrainRobotDrive->TankDrive(0.0,0.0,false);
+	RobotMap::driveTrainRobotDrive->TankDrive(0.0,0.0);
 }
 
 // Called repeatedly when this Command is scheduled to run
