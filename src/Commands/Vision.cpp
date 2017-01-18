@@ -7,13 +7,16 @@
 
 #include "Vision.h"
 #include <string>
+#include "WPILib.h"
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
 
 using namespace std;
 
 Vision::Vision(string ip) {
-	// TODO Auto-generated constructor stub
 
 }
+
 
 
 
