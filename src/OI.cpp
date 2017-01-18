@@ -36,27 +36,27 @@ OI::OI() {
     opStick.reset(new Joystick(2));
     
     intakeOff.reset(new JoystickButton(opStick.get(), 7));
-    intakeOff->WhileHeld(new TurnIntakeOff());
+    intakeOff->WhenPressed(new TurnIntakeOff());
     intakeToggle.reset(new JoystickButton(opStick.get(), 6));
-    intakeToggle->WhileHeld(new ToggleIntake());
+    intakeToggle->WhenPressed(new ToggleIntake());
     offPower.reset(new JoystickButton(opStick.get(), 5));
-    offPower->WhileHeld(new TurnShooterOff());
+    offPower->WhenPressed(new TurnShooterOff());
     presetPower.reset(new JoystickButton(opStick.get(), 4));
-    presetPower->WhileHeld(new ShooterPresetPower());
+    presetPower->WhenPressed(new ShooterPresetPower());
     decreasePower.reset(new JoystickButton(opStick.get(), 3));
-    decreasePower->WhileHeld(new DecreaseShooterPower());
+    decreasePower->WhenPressed(new DecreaseShooterPower());
     increasePower.reset(new JoystickButton(opStick.get(), 2));
-    increasePower->WhileHeld(new IncreaseShooterPower());
+    increasePower->WhenPressed(new IncreaseShooterPower());
     feederToggle.reset(new JoystickButton(opStick.get(), 1));
-    feederToggle->WhileHeld(new ToggleFeeder());
+    feederToggle->WhenPressed(new ToggleFeeder());
     rightStick.reset(new Joystick(1));
     
     rightFireButton.reset(new JoystickButton(rightStick.get(), 1));
-    rightFireButton->WhileHeld(new Fire());
+    rightFireButton->WhenPressed(new Fire());
     leftStick.reset(new Joystick(0));
     
     leftFireButton.reset(new JoystickButton(leftStick.get(), 2));
-    leftFireButton->WhileHeld(new Fire());
+    leftFireButton->WhenPressed(new Fire());
     toggleButton.reset(new JoystickButton(leftStick.get(), 1));
     toggleButton->WhenPressed(new ToggleDrive());
 
