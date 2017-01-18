@@ -16,10 +16,10 @@
 #include "Commands/AutonomousCommand.h"
 #include "Commands/DecreaseShooterPower.h"
 #include "Commands/Drive.h"
-#include "Commands/FeedShooter.h"
 #include "Commands/Fire.h"
 #include "Commands/IncreaseShooterPower.h"
 #include "Commands/Intake.h"
+#include "Commands/RunShooter.h"
 #include "Commands/ShooterPresetPower.h"
 #include "Commands/ToggleDrive.h"
 #include "Commands/ToggleFeeder.h"
@@ -47,8 +47,6 @@ OI::OI() {
     decreasePower->WhenPressed(new DecreaseShooterPower());
     increasePower.reset(new JoystickButton(opStick.get(), 2));
     increasePower->WhenPressed(new IncreaseShooterPower());
-    feederToggle.reset(new JoystickButton(opStick.get(), 1));
-    feederToggle->WhenPressed(new ToggleFeeder());
     rightStick.reset(new Joystick(1));
     
     rightFireButton.reset(new JoystickButton(rightStick.get(), 1));
@@ -61,6 +59,7 @@ OI::OI() {
     toggleButton->WhenPressed(new ToggleDrive());
 
     // SmartDashboard Buttons
+    SmartDashboard::PutData("RunShooter", new RunShooter());
     SmartDashboard::PutData("ToggleFeeder", new ToggleFeeder());
     SmartDashboard::PutData("ShooterPresetPower", new ShooterPresetPower());
     SmartDashboard::PutData("TurnShooterOff", new TurnShooterOff());
