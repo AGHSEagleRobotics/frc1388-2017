@@ -24,7 +24,6 @@ private:
 	std::shared_ptr<JoystickButton> presetPower;
 	std::shared_ptr<JoystickButton> decreasePower;
 	std::shared_ptr<JoystickButton> increasePower;
-	std::shared_ptr<JoystickButton> feederToggle;
 	std::shared_ptr<Joystick> rightStick;
 	std::shared_ptr<JoystickButton> rightFireButton;
 	std::shared_ptr<Joystick> leftStick;
