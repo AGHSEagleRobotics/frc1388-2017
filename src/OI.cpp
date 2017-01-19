@@ -19,7 +19,6 @@
 #include "Commands/Fire.h"
 #include "Commands/IncreaseShooterPower.h"
 #include "Commands/Intake.h"
-#include "Commands/RunShooter.h"
 #include "Commands/ShooterPresetPower.h"
 #include "Commands/ToggleDrive.h"
 #include "Commands/ToggleFeeder.h"
@@ -59,7 +58,6 @@ OI::OI() {
     toggleButton->WhenPressed(new ToggleDrive());
 
     // SmartDashboard Buttons
-    SmartDashboard::PutData("RunShooter", new RunShooter());
     SmartDashboard::PutData("ToggleFeeder", new ToggleFeeder());
     SmartDashboard::PutData("ShooterPresetPower", new ShooterPresetPower());
     SmartDashboard::PutData("TurnShooterOff", new TurnShooterOff());
