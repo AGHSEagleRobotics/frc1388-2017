@@ -68,6 +68,8 @@ void Robot::RobotInit() {
 		processingSink.GrabFrame(source);
 		cvtColor(source, output, cv::COLOR_BGR2GRAY);
 	}
+
+
   }
 
 /**
