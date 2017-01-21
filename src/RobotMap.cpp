@@ -62,8 +62,8 @@ void RobotMap::init() {
     shooterShootingMotor.reset(new Talon(4));
     lw->AddActuator("Shooter", "ShootingMotor", std::static_pointer_cast<Talon>(shooterShootingMotor));
     
-    winchWinchMotor.reset(new Talon(8));
-    lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<Talon>(winchWinchMotor));
+    winchWinchMotor.reset(new TalonSRX(15));
+    lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<TalonSRX>(winchWinchMotor));
     
     feederShooterFeedingMotor.reset(new Talon(5));
     lw->AddActuator("Feeder", "ShooterFeedingMotor", std::static_pointer_cast<Talon>(feederShooterFeedingMotor));
