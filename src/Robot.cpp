@@ -66,10 +66,10 @@ void Robot::RobotInit() {
 	cv::Mat source;
 	cv::Mat output;
 
-	while(true){
-		processingSink.GrabFrame(source);
-		cvtColor(source, output, cv::COLOR_BGR2GRAY);
-	}
+//	while(true){
+//		processingSink.GrabFrame(source);
+//		cvtColor(source, output, cv::COLOR_BGR2GRAY);
+//	}
 
 
   }
