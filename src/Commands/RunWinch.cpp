@@ -29,8 +29,8 @@ void RunWinch::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RunWinch::Execute() {
-	double scaler = Robot::oi->getOpStick()->GetY();
-	if (fabs(scaler)>=0.1){
+
+	if (fabs(Robot::oi->getOpStick()->GetY())>=0.1){
 		RobotMap::winchWinchMotor->Set(.2 * Robot::oi->getOpStick()->GetY());
 	}
 	else {
