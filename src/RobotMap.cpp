@@ -21,8 +21,7 @@ std::shared_ptr<SpeedController> RobotMap::driveTrainLeftRear;
 std::shared_ptr<SpeedController> RobotMap::driveTrainRightFront;
 std::shared_ptr<SpeedController> RobotMap::driveTrainRightRear;
 std::shared_ptr<RobotDrive> RobotMap::driveTrainRobotDrive;
-std::shared_ptr<SpeedController> RobotMap::ballIntakeIntakeMotor1;
-std::shared_ptr<SpeedController> RobotMap::ballIntakeIntakeMotor2;
+std::shared_ptr<SpeedController> RobotMap::ballIntakeIntakeMotor;
 std::shared_ptr<SpeedController> RobotMap::shooterShootingMotor;
 std::shared_ptr<SpeedController> RobotMap::winchWinchMotor;
 std::shared_ptr<SpeedController> RobotMap::feederShooterFeedingMotor;
@@ -53,11 +52,8 @@ void RobotMap::init() {
         driveTrainRobotDrive->SetSensitivity(0.5);
         driveTrainRobotDrive->SetMaxOutput(1.0);
 
-    ballIntakeIntakeMotor1.reset(new Talon(6));
-    lw->AddActuator("BallIntake", "IntakeMotor1", std::static_pointer_cast<Talon>(ballIntakeIntakeMotor1));
-    
-    ballIntakeIntakeMotor2.reset(new Talon(7));
-    lw->AddActuator("BallIntake", "IntakeMotor2", std::static_pointer_cast<Talon>(ballIntakeIntakeMotor2));
+    ballIntakeIntakeMotor.reset(new Talon(6));
+    lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Talon>(ballIntakeIntakeMotor));
     
     shooterShootingMotor.reset(new Talon(4));
     lw->AddActuator("Shooter", "ShootingMotor", std::static_pointer_cast<Talon>(shooterShootingMotor));

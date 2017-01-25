@@ -31,8 +31,7 @@ public:
 	static std::shared_ptr<SpeedController> driveTrainRightFront;
 	static std::shared_ptr<SpeedController> driveTrainRightRear;
 	static std::shared_ptr<RobotDrive> driveTrainRobotDrive;
-	static std::shared_ptr<SpeedController> ballIntakeIntakeMotor1;
-	static std::shared_ptr<SpeedController> ballIntakeIntakeMotor2;
+	static std::shared_ptr<SpeedController> ballIntakeIntakeMotor;
 	static std::shared_ptr<SpeedController> shooterShootingMotor;
 	static std::shared_ptr<SpeedController> winchWinchMotor;
 	static std::shared_ptr<SpeedController> feederShooterFeedingMotor;
