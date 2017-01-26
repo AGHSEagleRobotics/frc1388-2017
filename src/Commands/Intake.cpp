@@ -25,26 +25,12 @@ Intake::Intake(): Command() {
 
 // Called just before this Command runs the first time
 void Intake::Initialize() {
-	RobotMap::ballIntakeIntakeMotor1->Set(0.0);
-	RobotMap::ballIntakeIntakeMotor2->Set(0.0);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void Intake::Execute() {
-	if(Robot::ballIntake->isSwitched==true && Robot::ballIntake->toggled==false){
-		Robot::ballIntake->toggled = true;
-		Robot::ballIntake->leftMotor = Robot::ballIntake->leftMotor*-1.0;
-		Robot::ballIntake->rightMotor = Robot::ballIntake->rightMotor*-1.0;
 
-	}
-	if(Robot::ballIntake->isSwitched==false && Robot::ballIntake->toggled==true){
-		Robot::ballIntake->toggled = false;
-			Robot::ballIntake->leftMotor = Robot::ballIntake->leftMotor*-1.0;
-			Robot::ballIntake->rightMotor = Robot::ballIntake->rightMotor*-1.0;
-	}
-
-	RobotMap::ballIntakeIntakeMotor1->Set(Robot::ballIntake->leftMotor);
-	RobotMap::ballIntakeIntakeMotor2->Set(Robot::ballIntake->rightMotor);
 
 }
 

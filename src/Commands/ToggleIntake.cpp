@@ -25,7 +25,6 @@ ToggleIntake::ToggleIntake(): Command() {
 
 // Called just before this Command runs the first time
 void ToggleIntake::Initialize() {
-Robot::ballIntake->isSwitched=!Robot::ballIntake->isSwitched;
 }
 
 // Called repeatedly when this Command is scheduled to run
