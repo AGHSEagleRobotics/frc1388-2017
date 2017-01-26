@@ -25,7 +25,7 @@ IncreaseShooterPower::IncreaseShooterPower(): Command() {
 
 // Called just before this Command runs the first time
 void IncreaseShooterPower::Initialize() {
-	double nextPower = std::max(1.0, Robot::shooter->shootPower + INCREASE);
+	double nextPower = std::min(1.0, Robot::shooter->shootPower + INCREASE);
 	Robot::shooter->shootPower = nextPower;
 }
 
