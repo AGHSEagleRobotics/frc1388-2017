@@ -40,8 +40,6 @@ OI::OI() {
     intakeOn->WhenPressed(new Intake());
     intakeOff.reset(new JoystickButton(opStick.get(), 7));
     intakeOff->WhenPressed(new TurnIntakeOff());
-    reverseIntake.reset(new JoystickButton(opStick.get(), 6));
-    reverseIntake->WhileHeld(new Intake());
     offPower.reset(new JoystickButton(opStick.get(), 5));
     offPower->WhenPressed(new TurnShooterOff());
     presetPower.reset(new JoystickButton(opStick.get(), 4));
@@ -71,6 +69,7 @@ OI::OI() {
     SmartDashboard::PutString("Ball Intake Motor 1", ballIntakeMotor1());
     SmartDashboard::PutString("Hopper Feeder Status", shooterFeeder());
     SmartDashboard::PutString("Shooter Status", shooterMotor());
+    SmartDashboard::PutString("Drive Configuration", driveConfig());
 }
 
 	string OI::ballIntakeMotor1(){
@@ -91,13 +90,21 @@ OI::OI() {
 		}
 	}
 
-
 	string OI::shooterMotor(){
 		RobotMap::shooterShootingMotor->Get();
 		if(RobotMap::shooterShootingMotor > 0){
 			return "Shooting Motor Is On";
 		}else{
 			return "Shooting Motor Is Off";
+		}
+	}
+
+	string OI::driveConfig(){
+		Robot::driveTrain->isSwitched;
+		if(Robot::driveTrain->isSwitched == true){
+			return "Drive Train Is Switched";
+		}else{
+			return "Drive Train Is On Default";
 		}
 	}
 
