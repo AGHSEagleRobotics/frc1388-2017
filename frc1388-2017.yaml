@@ -51,9 +51,9 @@ Children:
             default: '0'
             name: Output Channel (PWM)
             validators: *id003
-            value: '2'
+            value: '3'
         Base: Speed Controller
-        Name: RightFront
+        Name: RightRear
       - Children: []
         Properties:
           Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -67,9 +67,9 @@ Children:
             default: '0'
             name: Output Channel (PWM)
             validators: *id003
-            value: '3'
+            value: '2'
         Base: Speed Controller
-        Name: RightRear
+        Name: RightFront
       Properties:
         Sensitivity: !!robotbuilder.data.properties.DoubleProperty {default: 0.5,
           name: Sensitivity, validators: null, value: 0.5}
@@ -824,7 +824,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Isaiah\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Eagle\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: 'C:\workspace'}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}
@@ -843,7 +843,7 @@ Properties:
     name: Export Subsystems, validators: null, value: true}
   Simulation World File: !!robotbuilder.data.properties.StringProperty {default: /usr/share/frcsim/worlds/GearsBotDemo.world,
     name: Simulation World File, validators: null, value: /usr/share/frcsim/worlds/GearsBotDemo.world}
-  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Isaiah\',
+  Wiring file location: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Eagle\',
     extension: null, folder: true, name: Wiring file location, validators: null, value: 'C:\workspace'}
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
     name: Autonomous Command, type: Command, validators: null, value: Autonomous Command}

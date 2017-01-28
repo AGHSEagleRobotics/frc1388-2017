@@ -51,7 +51,9 @@ void Robot::RobotInit() {
 	//THIS IS WHERE THE VISION CODE AND CAMERA ARE SET UP
 	//set the OpenCV camera object to be processed to the live feed of the camera
 	//the CameraServer will handle all the networking and such
+//	printf("robot");
 	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+
 
 	//we set the camera resolution to this resolution because documented cases suggest this res
 	//is the best for operating on

@@ -19,11 +19,11 @@
 #include "Commands/Fire.h"
 #include "Commands/IncreaseShooterPower.h"
 #include "Commands/Intake.h"
-#include "Commands/RunIntakeBackwards.h"
 #include "Commands/RunShooter.h"
 #include "Commands/RunWinch.h"
 #include "Commands/ShooterPresetPower.h"
 #include "Commands/ToggleDrive.h"
+#include "Commands/ToggleIntake.h"
 #include "Commands/TurnIntakeOff.h"
 #include "Commands/TurnShooterOff.h"
 
@@ -39,8 +39,8 @@ OI::OI() {
     intakeOn->WhenPressed(new Intake());
     intakeOff.reset(new JoystickButton(opStick.get(), 7));
     intakeOff->WhenPressed(new TurnIntakeOff());
-    runBackwards.reset(new JoystickButton(opStick.get(), 6));
-    runBackwards->WhenPressed(new RunIntakeBackwards());
+    intakeToggle.reset(new JoystickButton(opStick.get(), 6));
+    intakeToggle->WhenPressed(new ToggleIntake());
     offPower.reset(new JoystickButton(opStick.get(), 5));
     offPower->WhenPressed(new TurnShooterOff());
     presetPower.reset(new JoystickButton(opStick.get(), 4));
