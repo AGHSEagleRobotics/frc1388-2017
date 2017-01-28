@@ -30,6 +30,7 @@ void TurnIntakeOff::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void TurnIntakeOff::Execute() {
+	RobotMap::ballIntakeIntakeMotor->Set(0.0);
 		}
 
 
