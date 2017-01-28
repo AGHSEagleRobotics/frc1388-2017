@@ -31,6 +31,13 @@ void Intake::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void Intake::Execute() {
 
+	float motorSpeed = 1.0;
+
+	if (Robot::oi->getOpStick()->GetRawButton(6)){
+		motorSpeed = motorSpeed * -1;
+	}
+	RobotMap::ballIntakeIntakeMotor->Set(motorSpeed);
+
 
 }
 
