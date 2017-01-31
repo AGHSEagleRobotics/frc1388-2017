@@ -23,11 +23,8 @@ private:
 	std::shared_ptr<Joystick> opStick;
 	std::shared_ptr<JoystickButton> intakeOn;
 	std::shared_ptr<JoystickButton> intakeOff;
-<<<<<<< HEAD
 	std::shared_ptr<JoystickButton> intakeToggle;
-=======
 	std::shared_ptr<JoystickButton> reverseIntake;
->>>>>>> 37ba913424b673991073772c39bbe3375e7e4c53
 	std::shared_ptr<JoystickButton> offPower;
 	std::shared_ptr<JoystickButton> presetPower;
 	std::shared_ptr<JoystickButton> decreasePower;
