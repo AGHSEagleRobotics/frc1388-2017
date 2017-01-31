@@ -30,7 +30,7 @@ void RunShooter::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RunShooter::Execute() {
-	RobotMap::shooterShootingMotor->Set(Robot::shooter->shootPower);
+	RobotMap::shooterShootMotor->Set(Robot::shooter->shootPower);
 }
 
 // Make this return true when this Command no longer needs to run execute()
