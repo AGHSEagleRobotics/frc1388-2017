@@ -1,0 +1,17 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="3" y="34"/>
+	</widget>
+	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="0"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="18" y="369"/>
+		<width>470</width>
+		<height>41</height>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
