@@ -50,21 +50,21 @@ void Robot::RobotInit() {
 
 	//THIS IS WHERE THE VISION CODE AND CAMERA ARE SET UP
 	//set the OpenCV camera object to be processed to the live feed of the camera
-	//the CameraServer will handle all the networking and such
-	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-
-	//we set the camera resolution to this resolution because documented cases suggest this res
-	//is the best for operating on
-	camera.SetResolution(640,480);
-
-	//A CvSink is simply an object that takes in the video to do something with it, this sink will
-	//process the image and return data about the image
-	cs::CvSink processingSink = CameraServer::GetInstance()->GetVideo();
-
-	//This CvSource will output the processed image to the smartdashboard
-	cs::CvSource outputStream = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
-	cv::Mat source;
-	cv::Mat output;
+//	//the CameraServer will handle all the networking and such
+//	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+//
+//	//we set the camera resolution to this resolution because documented cases suggest this res
+//	//is the best for operating on
+//	camera.SetResolution(640,480);
+//
+//	//A CvSink is simply an object that takes in the video to do something with it, this sink will
+//	//process the image and return data about the image
+//	cs::CvSink processingSink = CameraServer::GetInstance()->GetVideo();
+//
+//	//This CvSource will output the processed image to the smartdashboard
+//	cs::CvSource outputStream = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
+//	cv::Mat source;
+//	cv::Mat output;
 
 //	while(true){
 //		processingSink.GrabFrame(source);
