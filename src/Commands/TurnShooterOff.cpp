@@ -26,6 +26,7 @@ TurnShooterOff::TurnShooterOff(): Command() {
 // Called just before this Command runs the first time
 void TurnShooterOff::Initialize() {
 	Robot::shooter->shootPower = 0.0;
+	RobotMap::shooterShootMotor->Set(0.0);
 }
 
 // Called repeatedly when this Command is scheduled to run
