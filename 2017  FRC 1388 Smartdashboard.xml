@@ -1,16 +1,13 @@
 <xml version="1.0">
 <dashboard>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
-		<location x="8" y="68"/>
+		<location x="7" y="38"/>
 		<width>332</width>
 		<height>201</height>
 		<property name="Camera Choice" value=""/>
 	</static-widget>
 	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="3" y="34"/>
-	</widget>
-	<widget field="Drive" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="0" y="0"/>
+		<location x="3" y="3"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
 		<location x="18" y="369"/>
@@ -20,4 +17,5 @@
 </dashboard>
 <live-window>
 </live-window>
+	<hidden field="Drive"/>
 </xml>
