@@ -26,6 +26,7 @@ ShooterPresetPower::ShooterPresetPower(): Command() {
 // Called just before this Command runs the first time
 void ShooterPresetPower::Initialize() {
 	Robot::shooter->shootPower = PRESET;
+	Robot::shooter->SetSetpoint(Robot::shooter->shootPower);
 }
 
 // Called repeatedly when this Command is scheduled to run

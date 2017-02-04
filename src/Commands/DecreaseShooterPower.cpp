@@ -27,6 +27,7 @@ DecreaseShooterPower::DecreaseShooterPower(): Command() {
 void DecreaseShooterPower::Initialize() {
 	double nextPower = std::max(0.0, Robot::shooter->shootPower - DECREASE);
 	Robot::shooter->shootPower = nextPower;
+	Robot::shooter->SetSetpoint(Robot::shooter->shootPower);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -40,7 +41,6 @@ bool DecreaseShooterPower::IsFinished() {
 }
 // Called once after isFinished returns true
 void DecreaseShooterPower::End() {
-
 }
 
 // Called when another command which requires one or more of the same
