@@ -19,10 +19,10 @@ using namespace cv;
 class Vision {
 
 private:
-	Mat threshhold(Mat orig);
-	double pointDistance(int x1, int x2, int y1, int y2);
+	RotatedRect box1, box2;
+	Mat threshold(Mat orig);
 public:
-	Mat analyzeImage(Mat image);
+	void analyzeImage(Mat image);
 	Vision();
 	virtual ~Vision();
 	void SetupCamera();
