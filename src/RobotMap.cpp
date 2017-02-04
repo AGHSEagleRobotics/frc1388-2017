@@ -58,10 +58,10 @@ void RobotMap::init() {
         driveTrainRobotDrive->SetSensitivity(0.5);
         driveTrainRobotDrive->SetMaxOutput(1.0);
 
-    ballIntakeIntakeMotor.reset(new Talon(6));
+    ballIntakeIntakeMotor.reset(new Talon(0));
     lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Talon>(ballIntakeIntakeMotor));
     
-    winchWinchMotor.reset(new TalonSRX(0));
+    winchWinchMotor.reset(new TalonSRX(6));
     lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<TalonSRX>(winchWinchMotor));
     
     feederShooterFeedingMotor.reset(new Talon(5));
