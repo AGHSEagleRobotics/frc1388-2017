@@ -80,36 +80,36 @@ OI::OI() {
 	string OI::ballIntakeMotor1(){
 		RobotMap::ballIntakeIntakeMotor->Get();
 		if (RobotMap::ballIntakeIntakeMotor > 0){
-			return "Ball Intake Is On";
+			return "Is On";
 		}else{
-			return "Ball Intake Is off";
+			return "Is off";
 		}
 	}
 
 	string OI::shooterFeeder(){
 		RobotMap::feederShooterFeedingMotor->Get();
 		if(RobotMap::feederShooterFeedingMotor > 0){
-			return "Shooter Feeder Is On";
+			return "On";
 		}else{
-			return "Shooter Feeder Is Off";
+			return "Off";
 		}
 	}
 
 	string OI::shooterMotor(){
 		RobotMap::shooterShootMotor->Get();
 		if(RobotMap::shooterShootMotor > 0){
-			return "Shooting Motor Is On";
+			return "On";
 		}else{
-			return "Shooting Motor Is Off";
+			return "Off";
 		}
 	}
 
 	string OI::driveConfig(){
 		Robot::driveTrain->isSwitched;
 		if(Robot::driveTrain->isSwitched == true){
-			return "Drive Train Is Switched";
+			return "Switched";
 		}else{
-			return "Drive Train Is On Default";
+			return "Default";
 		}
 	}
 
