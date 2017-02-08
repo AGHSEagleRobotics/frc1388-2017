@@ -11,8 +11,9 @@
 #define SIZE_THRESHHOLD 500
 #define VERTICLE_HEIGHT_TO_WIDTH 2.5 //ratio of height to width in verticle targets
 #define HEIGHT_WIDTH_VERT_THRESHHOLD 0.5
-
-
+//TODO: Refine these constants
+#define FOCAL_LENGTH 877.1895 //in px
+#define VERTICAL_TAPE_WIDTH 2 //in inches
 
 using namespace cv;
 using namespace std;
@@ -76,6 +77,13 @@ Mat Vision::threshold(Mat orig){
 	blur(threshhold, threshhold, Size(3,3));
 
 	return threshhold;
+}
+
+float Vision::getDistance(){
+	//uses similar triangles in distance = (width * focal length) / perceived pixels
+	float percievedPixels = box1.size.width;
+	float distance = (VERTICAL_TAPE_WIDTH * FOCAL_LENGTH) / percievedPixels;
+	return distance;
 }
 
 Vision::~Vision() {

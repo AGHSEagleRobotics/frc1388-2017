@@ -21,6 +21,7 @@ class Vision {
 private:
 	RotatedRect box1, box2;
 	Mat threshold(Mat orig);
+	float getDistance();
 public:
 	void analyzeImage(Mat image);
 	Vision();
