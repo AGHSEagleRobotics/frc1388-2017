@@ -86,6 +86,13 @@ float Vision::getDistance(){
 	return distance;
 }
 
+float Vision::getHorizontalOffset(){
+	float center = (box1.center.x + box2.center.x) / 2;
+	float pixelOffset = center - 320; //320 is half the horizontal resolution of the camera feed
+	float inchesPerPixel = (VERTICAL_TAPE_WIDTH / box1.size.width); //a ratio to multiply by the pixel offset
+	return (inchesPerPixel * pixelOffset);
+}
+
 Vision::~Vision() {
 	// TODO Auto-generated destructor stub
 }
