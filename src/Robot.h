@@ -38,6 +38,8 @@ using namespace cs;
 class Robot : public IterativeRobot {
 private:
 	UsbCamera cam;
+	virtual void VisionThread();
+
 public:
 	std::unique_ptr<Command> autonomousCommand;
 	static std::unique_ptr<OI> oi;
