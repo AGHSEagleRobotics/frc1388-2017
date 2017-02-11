@@ -47,7 +47,6 @@ public:
 	std::unique_ptr<Command> autonomousCommand;
 	static std::unique_ptr<OI> oi;
 
-	AHRS *ahrs;
     ADIS16448_IMU *imu;
 
 	LiveWindow *lw = LiveWindow::GetInstance();
