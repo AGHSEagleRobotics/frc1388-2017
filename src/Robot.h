@@ -41,6 +41,8 @@ class Robot : public IterativeRobot {
 private:
 
 	UsbCamera cam;
+	static void VisionThread();
+
 public:
 	std::unique_ptr<Command> autonomousCommand;
 	static std::unique_ptr<OI> oi;

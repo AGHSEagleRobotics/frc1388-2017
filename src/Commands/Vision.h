@@ -22,6 +22,7 @@ private:
 	RotatedRect box1, box2;
 	Mat threshold(Mat orig);
 	float getDistance();
+	float getHorizontalOffset();
 public:
 	void analyzeImage(Mat image);
 	Vision();
