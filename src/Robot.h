@@ -13,7 +13,6 @@
 #define _ROBOT_H
 
 #include "WPILib.h"
-#include "AHRS.h"
 #include "Gyro/src/ADIS16448_IMU.h"
 #include "Commands/Command.h"
 #include "RobotMap.h"

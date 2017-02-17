@@ -41,7 +41,11 @@ void Drive::Initialize() {
 void Drive::Execute() {
 	double leftStickY = Deadband(Robot::oi->getLeftStick()->GetY());
 	double rightStickY = Deadband(Robot::oi->getRightStick()->GetY());
-
+	bool isLimit = RobotMap::driveTrainDriveLimit->Get();
+	if (isLimit){
+		leftStickY = std::max(0.0, leftStickY);
+		rightStickY= std::max(0.0, rightStickY);
+	}
 	RobotMap::driveTrainRobotDrive->TankDrive(leftStickY, rightStickY, false);
 }
 
