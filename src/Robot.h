@@ -13,12 +13,12 @@
 #define _ROBOT_H
 
 #include "WPILib.h"
-#include "AHRS.h"
 #include "Commands/Command.h"
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
 
 using namespace cv;
 using namespace cs;

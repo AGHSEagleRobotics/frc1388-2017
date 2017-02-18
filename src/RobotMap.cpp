@@ -23,6 +23,7 @@ std::shared_ptr<SpeedController> RobotMap::driveTrainRightRear;
 std::shared_ptr<RobotDrive> RobotMap::driveTrainRobotDrive;
 std::shared_ptr<Encoder> RobotMap::driveTrainRightEncoder;
 std::shared_ptr<Encoder> RobotMap::driveTrainLeftEncoder;
+std::shared_ptr<DigitalInput> RobotMap::driveTrainDriveLimit;
 std::shared_ptr<SpeedController> RobotMap::ballIntakeIntakeMotor;
 std::shared_ptr<SpeedController> RobotMap::winchWinchMotor;
 std::shared_ptr<SpeedController> RobotMap::feederShooterFeedingMotor;
@@ -74,7 +75,9 @@ void RobotMap::init() {
     driveTrainLeftEncoder->SetDistancePerPulse(1.0);
     driveTrainLeftEncoder->SetPIDSourceType(PIDSourceType::kRate);
     ballIntakeIntakeMotor.reset(new Spark(1));
+    driveTrainDriveLimit.reset(new DigitalInput(10));
     lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Spark>(ballIntakeIntakeMotor));
+    lw->AddSensor("DriveTrain", "DriveLimit", driveTrainDriveLimit);
     
     winchWinchMotor.reset(new Spark(0));
     lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<Spark>(winchWinchMotor));
