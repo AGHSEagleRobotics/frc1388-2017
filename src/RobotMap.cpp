@@ -74,10 +74,11 @@ void RobotMap::init() {
     lw->AddSensor("DriveTrain", "LeftEncoder", driveTrainLeftEncoder);
     driveTrainLeftEncoder->SetDistancePerPulse(1.0);
     driveTrainLeftEncoder->SetPIDSourceType(PIDSourceType::kRate);
-    ballIntakeIntakeMotor.reset(new Spark(1));
     driveTrainDriveLimit.reset(new DigitalInput(10));
-    lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Spark>(ballIntakeIntakeMotor));
     lw->AddSensor("DriveTrain", "DriveLimit", driveTrainDriveLimit);
+    
+    ballIntakeIntakeMotor.reset(new Spark(1));
+    lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Spark>(ballIntakeIntakeMotor));
     
     winchWinchMotor.reset(new Spark(0));
     lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<Spark>(winchWinchMotor));
