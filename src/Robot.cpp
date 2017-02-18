@@ -91,8 +91,6 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-
-	RobotMap::visionVisionLight->Set(Relay::kForward);
 }
 
 void Robot::AutonomousPeriodic() {
@@ -109,6 +107,7 @@ void Robot::TeleopInit() {
 		autonomousCommand->Cancel();
 
 
+	RobotMap::visionVisionLight->Set(Relay::kForward);
 }
 
 void Robot::TeleopPeriodic() {

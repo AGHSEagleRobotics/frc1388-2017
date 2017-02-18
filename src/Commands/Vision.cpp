@@ -19,20 +19,21 @@ using namespace cs;
 using namespace cv;
 using namespace std;
 
+
+vector<float> lastTenSamples = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 //an vector of points defining the points of detected rectangles
 vector<vector<Point2f>> points;
 
 static bool visionFlag = false;
 RotatedRect box1, box2;
+MjpegServer inputStream("MJPEG Server", 8080);
+HttpCamera cam("Main Cam", "http://FRC:FRC@10.13.88.97/mjpg/video.mjpg");
 
 Vision::Vision() {
 
 }
 
 void Vision::VisionThread(){
-
-	MjpegServer inputStream("MJPEG Server", 80);
-	HttpCamera cam("Main Cam", "http://10.13.88.97/mjpg/video.mjpg");
 
 	CvSink sink("Processing Sink");
 	sink.SetSource(cam);
@@ -43,7 +44,7 @@ void Vision::VisionThread(){
 		sink.GrabFrame(img);
 
 		if(!img.empty()){
-			printf("not empty");
+			printf("not empty\n");
 		}
 
 		analyzeImage(img);
@@ -63,6 +64,7 @@ bool Vision::toggleVisionThread(){
 }
 
 void Vision::analyzeImage(Mat image){
+	printf("img analyzed\n");
 	//threshold the image
 	image = threshold(image);
 
@@ -100,6 +102,9 @@ void Vision::analyzeImage(Mat image){
 			}
 		}
 	}
+
+	setDistance();
+	printf("Distance:%f\n", getDistance());
 }
 
 
@@ -116,11 +121,17 @@ Mat Vision::threshold(Mat orig){
 	return threshhold;
 }
 
-float Vision::getDistance(){
+void Vision::setDistance(){
 	//uses similar triangles in distance = (width * focal length) / perceived pixels
 	float percievedPixels = box1.size.width;
 	float distance = (VERTICAL_TAPE_WIDTH * FOCAL_LENGTH) / percievedPixels;
-	return distance;
+
+	lastTenSamples.insert(lastTenSamples.begin(), distance);
+	lastTenSamples.pop_back();
+}
+
+float Vision::getDistance(){
+	return (lastTenSamples.at(4) + lastTenSamples.at(5)) / 2;
 }
 
 float Vision::getHorizontalOffset(){
