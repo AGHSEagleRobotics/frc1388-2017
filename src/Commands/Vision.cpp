@@ -15,14 +15,51 @@
 #define FOCAL_LENGTH 877.1895 //in px
 #define VERTICAL_TAPE_WIDTH 2 //in inches
 
+using namespace cs;
 using namespace cv;
 using namespace std;
 
 //an vector of points defining the points of detected rectangles
 vector<vector<Point2f>> points;
 
+static bool visionFlag = false;
+RotatedRect box1, box2;
+
 Vision::Vision() {
 
+}
+
+void Vision::VisionThread(){
+
+	MjpegServer inputStream("MJPEG Server", 80);
+	HttpCamera cam("Main Cam", "http://10.13.88.97/mjpg/video.mjpg");
+
+	CvSink sink("Processing Sink");
+	sink.SetSource(cam);
+
+	Mat img;
+
+	while(visionFlag){
+		sink.GrabFrame(img);
+
+		if(!img.empty()){
+			printf("not empty");
+		}
+
+		analyzeImage(img);
+	}
+}
+
+bool Vision::toggleVisionThread(){
+	visionFlag = !visionFlag;
+	thread visionThread(VisionThread);
+	if(visionFlag){
+		visionThread.detach();
+	}else{
+		visionThread.join();
+	}
+
+	return visionFlag;
 }
 
 void Vision::analyzeImage(Mat image){
@@ -41,7 +78,7 @@ void Vision::analyzeImage(Mat image){
 	RotatedRect currentRect;
 
 	//test for area, remove all small rectangles
-	for(int i = 0; i < contours.size(); i++){
+	for(unsigned int i = 0; i < contours.size(); i++){
 		currentRect = minAreaRect(Mat(contours[i]));
 		if(currentRect.size.width * currentRect.size.height > 300){
 			//if the area is greater than 300 we add it to the vector of rectangles
@@ -52,7 +89,7 @@ void Vision::analyzeImage(Mat image){
 	//find the two our of remaining contours that fit our height x width the best
 	float currentMin = 1000, currentSecondMin = 1000; //the minimum offset from the threshold and the second closest
 	float currentHWRatio;
-	for(int i = 0; i < rects.size(); i++){
+	for(unsigned int i = 0; i < rects.size(); i++){
 		currentHWRatio = rects[i].size.height / rects[i].size.width;
 		if(fabs(currentHWRatio - VERTICLE_HEIGHT_TO_WIDTH) < currentSecondMin){
 			if(fabs(currentHWRatio - VERTICLE_HEIGHT_TO_WIDTH) < currentMin){

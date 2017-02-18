@@ -19,15 +19,15 @@ using namespace cv;
 class Vision {
 
 private:
-	RotatedRect box1, box2;
-	Mat threshold(Mat orig);
-	float getDistance();
-	float getHorizontalOffset();
+	static void VisionThread();
+	static Mat threshold(Mat orig);
 public:
-	void analyzeImage(Mat image);
+	static float getDistance();
+	static float getHorizontalOffset();
+	static bool toggleVisionThread();
+	static void analyzeImage(Mat image);
 	Vision();
 	virtual ~Vision();
-	void SetupCamera();
 };
 
 #endif /* SRC_COMMANDS_VISION_H_ */
