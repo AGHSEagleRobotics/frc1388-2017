@@ -15,6 +15,7 @@
 #define FOCAL_LENGTH 877.1895 //in px
 #define VERTICAL_TAPE_WIDTH 2 //in inches
 
+using namespace cs;
 using namespace cv;
 using namespace std;
 
@@ -29,17 +30,23 @@ Vision::Vision() {
 }
 
 void Vision::VisionThread(){
-	Mat image;
-	VideoCapture cap("http://10.13.88.98/mjpg/video.mjpg");
+
+	MjpegServer inputStream("MJPEG Server", 80);
+	HttpCamera cam("Main Cam", "http://10.13.88.97/mjpg/video.mjpg");
+
+	CvSink sink("Processing Sink");
+	sink.SetSource(cam);
+
+	Mat img;
 
 	while(visionFlag){
-		if(!cap.isOpened()){
-			printf("Camera not opened\n\n\n");
-			break;
+		sink.GrabFrame(img);
+
+		if(!img.empty()){
+			printf("not empty");
 		}
-		printf("\n\n\n\n\nVision Thread\n\n\n\n\n");
-		cap >> image;
-		analyzeImage(image);
+
+		analyzeImage(img);
 	}
 }
 
