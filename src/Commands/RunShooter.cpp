@@ -26,7 +26,10 @@ RunShooter::RunShooter(): Command() {
 // Called just before this Command runs the first time
 void RunShooter::Initialize() {
 	//Nothing, probably
-	Robot::shooter->SetSetpoint(Robot::shooter->shootPower);
+	printf("Initializing Run Shooter");
+	RobotMap::shooterShooterPID->SetSetpoint(Robot::shooter->shootPower);
+	RobotMap::shooterShooterPID->Reset();
+	RobotMap::shooterShooterPID->Enable();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -36,16 +39,16 @@ void RunShooter::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool RunShooter::IsFinished() {
-    return false;
+    return true;
 }
 
 // Called once after isFinished returns true
 void RunShooter::End() {
-
+	//RobotMap::shooterShooterPID->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RunShooter::Interrupted() {
-
+	End();
 }
