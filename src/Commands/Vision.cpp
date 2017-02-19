@@ -8,11 +8,13 @@
 #include "Vision.h"
 #include <string>
 #include "WPILib.h"
+
+//the threshold of how big our rectangles must be in area to be considered for further testing.
 #define SIZE_THRESHHOLD 500
-#define VERTICLE_HEIGHT_TO_WIDTH 2.5 //ratio of height to width in verticle targets
-#define HEIGHT_WIDTH_VERT_THRESHHOLD 0.5
+
+#define VERTICLE_HEIGHT_TO_WIDTH 2.5 //ratio of height to width in vertical targets
 //TODO: Refine these constants
-#define FOCAL_LENGTH 877.1895 //in px
+#define FOCAL_LENGTH 877.1895 //in px this represents a ratio
 #define VERTICAL_TAPE_WIDTH 2 //in inches
 
 using namespace cs;
@@ -29,6 +31,8 @@ Rect box1, box2;
 MjpegServer inputStream("MJPEG Server", 8080);
 HttpCamera cam("Main Cam", "http://FRC:FRC@10.13.88.97/mjpg/video.mjpg");
 
+Mat img;
+
 Vision::Vision() {
 
 }
@@ -37,8 +41,6 @@ void Vision::VisionThread(){
 
 	CvSink sink("Processing Sink");
 	sink.SetSource(cam);
-
-	Mat img;
 
 	while(visionFlag){
 		sink.GrabFrame(img);
@@ -139,6 +141,10 @@ float Vision::getHorizontalOffset(){
 	float pixelOffset = center - 320; //320 is half the horizontal resolution of the camera feed
 	float inchesPerPixel = (VERTICAL_TAPE_WIDTH / box1.width); //a ratio to multiply by the pixel offset
 	return (inchesPerPixel * pixelOffset);
+}
+
+Mat Vision::returnImg(){
+	return img;
 }
 
 Vision::~Vision() {
