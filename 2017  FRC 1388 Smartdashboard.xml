@@ -6,34 +6,30 @@
 		<height>201</height>
 		<property name="Camera Choice" value=""/>
 	</static-widget>
-	<widget field="Autonomous Command" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="361" y="14"/>
-	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
 		<location x="18" y="369"/>
 		<width>470</width>
 		<height>41</height>
 	</static-widget>
-	<widget field="Aim" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
-		<location x="386" y="115"/>
-	</widget>
 	<widget field="Shooter Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="371" y="62"/>
 		<height>31</height>
 	</widget>
 	<widget field="Shooter Status" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="612" y="74"/>
+		<location x="607" y="27"/>
 	</widget>
 	<widget field="Hopper Feeder Status" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="595" y="159"/>
+		<location x="599" y="102"/>
 	</widget>
 	<widget field="Ball Intake Motor 1" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="604" y="120"/>
+		<location x="601" y="68"/>
 	</widget>
 	<widget field="Drive Configuration" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="601" y="28"/>
+		<location x="378" y="21"/>
 	</widget>
 </dashboard>
 <live-window>
 </live-window>
+	<hidden field="Aim"/>
+	<hidden field="Autonomous Command"/>
 </xml>
