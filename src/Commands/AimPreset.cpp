@@ -25,6 +25,7 @@ AimPreset::AimPreset(): Command() {
 // Called just before this Command runs the first time
 void AimPreset::Initialize() {
 	RobotMap::aimerAimerPID->SetSetpoint(PRESET);
+	RobotMap::aimerAimerPID->Enable();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -34,16 +35,16 @@ void AimPreset::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool AimPreset::IsFinished() {
-    return true;
+    return RobotMap::aimerAimerPID->OnTarget();
 }
 
 // Called once after isFinished returns true
 void AimPreset::End() {
-
+	RobotMap::aimerAimerPID->Disable();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void AimPreset::Interrupted() {
-
+	End();
 }
