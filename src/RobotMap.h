@@ -33,6 +33,10 @@ public:
 	static std::shared_ptr<RobotDrive> driveTrainRobotDrive;
 	static std::shared_ptr<Encoder> driveTrainRightEncoder;
 	static std::shared_ptr<DigitalInput> driveTrainDriveLimit;
+	static std::shared_ptr<AnalogInput> driveTrainfirstBit;
+	static std::shared_ptr<AnalogInput> driveTrainsecondBit;
+	static std::shared_ptr<AnalogInput> driveTrainthirdBit;
+	static std::shared_ptr<AnalogInput> driveTrainfourthBit;
 	static std::shared_ptr<SpeedController> ballIntakeIntakeMotor;
 	static std::shared_ptr<SpeedController> winchWinchMotor;
 	static std::shared_ptr<SpeedController> feederShooterFeedingMotor;
