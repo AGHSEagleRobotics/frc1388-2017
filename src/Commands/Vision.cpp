@@ -19,20 +19,21 @@ using namespace cs;
 using namespace cv;
 using namespace std;
 
+
+vector<float> lastTenSamples = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 //an vector of points defining the points of detected rectangles
 vector<vector<Point2f>> points;
 
 static bool visionFlag = false;
-RotatedRect box1, box2;
+Rect box1, box2;
+MjpegServer inputStream("MJPEG Server", 8080);
+HttpCamera cam("Main Cam", "http://FRC:FRC@10.13.88.97/mjpg/video.mjpg");
 
 Vision::Vision() {
 
 }
 
 void Vision::VisionThread(){
-
-	MjpegServer inputStream("MJPEG Server", 80);
-	HttpCamera cam("Main Cam", "http://10.13.88.97/mjpg/video.mjpg");
 
 	CvSink sink("Processing Sink");
 	sink.SetSource(cam);
@@ -43,7 +44,7 @@ void Vision::VisionThread(){
 		sink.GrabFrame(img);
 
 		if(!img.empty()){
-			printf("not empty");
+			printf("not empty\n");
 		}
 
 		analyzeImage(img);
@@ -63,6 +64,7 @@ bool Vision::toggleVisionThread(){
 }
 
 void Vision::analyzeImage(Mat image){
+	printf("img analyzed\n");
 	//threshold the image
 	image = threshold(image);
 
@@ -73,14 +75,14 @@ void Vision::analyzeImage(Mat image){
 	findContours(image, contours, hierarchy, RETR_EXTERNAL, CV_CHAIN_APPROX_SIMPLE, Point(0,0));
 
 	//the vector of rectangles that pass the area test
-	vector<RotatedRect> rects;
+	vector<Rect> rects;
 	//current rect being analyzed in the for loop
-	RotatedRect currentRect;
+	Rect currentRect;
 
 	//test for area, remove all small rectangles
 	for(unsigned int i = 0; i < contours.size(); i++){
-		currentRect = minAreaRect(Mat(contours[i]));
-		if(currentRect.size.width * currentRect.size.height > 300){
+		currentRect = boundingRect(Mat(contours[i]));
+		if(currentRect.width * currentRect.height > 300){
 			//if the area is greater than 300 we add it to the vector of rectangles
 			rects.push_back(currentRect);
 		}
@@ -90,7 +92,7 @@ void Vision::analyzeImage(Mat image){
 	float currentMin = 1000, currentSecondMin = 1000; //the minimum offset from the threshold and the second closest
 	float currentHWRatio;
 	for(unsigned int i = 0; i < rects.size(); i++){
-		currentHWRatio = rects[i].size.height / rects[i].size.width;
+		currentHWRatio = rects[i].height / rects[i].width;
 		if(fabs(currentHWRatio - VERTICLE_HEIGHT_TO_WIDTH) < currentSecondMin){
 			if(fabs(currentHWRatio - VERTICLE_HEIGHT_TO_WIDTH) < currentMin){
 				box2 = box1; //the second closest to the perfect ratio
@@ -100,6 +102,9 @@ void Vision::analyzeImage(Mat image){
 			}
 		}
 	}
+
+	setDistance();
+	printf("Distance:%f\n", getDistance());
 }
 
 
@@ -116,17 +121,23 @@ Mat Vision::threshold(Mat orig){
 	return threshhold;
 }
 
-float Vision::getDistance(){
+void Vision::setDistance(){
 	//uses similar triangles in distance = (width * focal length) / perceived pixels
-	float percievedPixels = box1.size.width;
+	float percievedPixels = box1.width;
 	float distance = (VERTICAL_TAPE_WIDTH * FOCAL_LENGTH) / percievedPixels;
-	return distance;
+
+	lastTenSamples.insert(lastTenSamples.begin(), distance);
+	lastTenSamples.pop_back();
+}
+
+float Vision::getDistance(){
+	return (lastTenSamples.at(4) + lastTenSamples.at(5)) / 2;
 }
 
 float Vision::getHorizontalOffset(){
-	float center = (box1.center.x + box2.center.x) / 2;
+	float center = (box1.x + box2.x) / 2;
 	float pixelOffset = center - 320; //320 is half the horizontal resolution of the camera feed
-	float inchesPerPixel = (VERTICAL_TAPE_WIDTH / box1.size.width); //a ratio to multiply by the pixel offset
+	float inchesPerPixel = (VERTICAL_TAPE_WIDTH / box1.width); //a ratio to multiply by the pixel offset
 	return (inchesPerPixel * pixelOffset);
 }
 

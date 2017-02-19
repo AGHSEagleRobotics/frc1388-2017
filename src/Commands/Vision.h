@@ -21,6 +21,7 @@ class Vision {
 private:
 	static void VisionThread();
 	static Mat threshold(Mat orig);
+	static void setDistance();
 public:
 	static float getDistance();
 	static float getHorizontalOffset();
