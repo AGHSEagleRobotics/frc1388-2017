@@ -23,6 +23,10 @@ std::shared_ptr<SpeedController> RobotMap::driveTrainRightRear;
 std::shared_ptr<RobotDrive> RobotMap::driveTrainRobotDrive;
 std::shared_ptr<Encoder> RobotMap::driveTrainRightEncoder;
 std::shared_ptr<DigitalInput> RobotMap::driveTrainDriveLimit;
+std::shared_ptr<AnalogInput> RobotMap::driveTrainfirstBit;
+std::shared_ptr<AnalogInput> RobotMap::driveTrainsecondBit;
+std::shared_ptr<AnalogInput> RobotMap::driveTrainthirdBit;
+std::shared_ptr<AnalogInput> RobotMap::driveTrainfourthBit;
 std::shared_ptr<SpeedController> RobotMap::ballIntakeIntakeMotor;
 std::shared_ptr<SpeedController> RobotMap::winchWinchMotor;
 std::shared_ptr<SpeedController> RobotMap::feederShooterFeedingMotor;
@@ -71,6 +75,18 @@ void RobotMap::init() {
     driveTrainRightEncoder->SetPIDSourceType(PIDSourceType::kRate);
     driveTrainDriveLimit.reset(new DigitalInput(8));
     lw->AddSensor("DriveTrain", "DriveLimit", driveTrainDriveLimit);
+    
+    driveTrainfirstBit.reset(new AnalogInput(0));
+    lw->AddSensor("DriveTrain", "firstBit", driveTrainfirstBit);
+    
+    driveTrainsecondBit.reset(new AnalogInput(1));
+    lw->AddSensor("DriveTrain", "secondBit", driveTrainsecondBit);
+    
+    driveTrainthirdBit.reset(new AnalogInput(2));
+    lw->AddSensor("DriveTrain", "thirdBit", driveTrainthirdBit);
+    
+    driveTrainfourthBit.reset(new AnalogInput(3));
+    lw->AddSensor("DriveTrain", "fourthBit", driveTrainfourthBit);
     
     ballIntakeIntakeMotor.reset(new Spark(1));
     lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Spark>(ballIntakeIntakeMotor));
