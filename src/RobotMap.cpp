@@ -99,7 +99,7 @@ void RobotMap::init() {
     
     aimerAimEncoder.reset(new Encoder(2, 3, false, Encoder::k4X));
     lw->AddSensor("Aimer", "AimEncoder", aimerAimEncoder);
-    aimerAimEncoder->SetDistancePerPulse(1.0);
+    aimerAimEncoder->SetDistancePerPulse(0.001428);
     aimerAimEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);
     aimerAimMotor.reset(new Talon(0));
     lw->AddActuator("Aimer", "AimMotor", std::static_pointer_cast<Talon>(aimerAimMotor));
