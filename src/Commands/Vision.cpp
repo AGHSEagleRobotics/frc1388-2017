@@ -169,6 +169,10 @@ Mat Vision::returnImg(){
 	return img;
 }
 
+vector<float> Vision::getLastTenSamples(){
+	return lastTenSamples;
+}
+
 Vision::~Vision() {
 	// TODO Auto-generated destructor stub
 }

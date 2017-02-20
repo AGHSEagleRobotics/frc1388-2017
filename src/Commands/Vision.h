@@ -28,6 +28,7 @@ public:
 	static float getHorizontalOffset();
 	static bool toggleVisionThread();
 	static void analyzeImage(Mat image);
+	static vector<float> getLastTenSamples();
 	Vision();
 	virtual ~Vision();
 };

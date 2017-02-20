@@ -1,0 +1,24 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Drive Configuration" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="118"/>
+	</widget>
+	<widget field="Shooter Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="97"/>
+	</widget>
+	<widget field="Shooter Status" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="76"/>
+	</widget>
+	<widget field="Aim" type="Command" class="edu.wpi.first.smartdashboard.gui.elements.Command">
+		<location x="0" y="42"/>
+	</widget>
+	<widget field="Hopper Feeder Status" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="21"/>
+	</widget>
+	<widget field="Ball Intake Motor 1" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="0" y="0"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>
