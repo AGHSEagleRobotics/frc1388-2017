@@ -33,7 +33,7 @@ AutonTurn::AutonTurn(int degrees): Command() {
 
 // Called just before this Command runs the first time
 void AutonTurn::Initialize() {
-	gyro = Robot::getGyroZ(); //angle get z
+	gyro = RobotMap::imu->GetAngleZ(); //angle get z
 
 	gyro %= 360;
 	printf("\nGyro: %d", gyro);
@@ -46,7 +46,7 @@ void AutonTurn::Execute(){
 
 
 
-	int dist = Robot::getGyroZ(); //get anglez
+	int dist = RobotMap::imu->GetAngleZ(); //get anglez
 
 //	double power = copysign(dist/goal, m_degrees);
 //
@@ -61,7 +61,7 @@ void AutonTurn::Execute(){
 // Make this return true when this Command no longer needs to run execute()
 bool AutonTurn::IsFinished() {
 
-	int gyro = Robot::getGyroZ(); //get angle z
+	int gyro = RobotMap::imu->GetAngleZ(); //get angle z
 
 	if((gyro > goal - THRESHOLD) && (gyro < goal + THRESHOLD)) return true;
 
