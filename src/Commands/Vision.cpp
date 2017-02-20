@@ -8,22 +8,26 @@
 #include "Vision.h"
 #include <string>
 #include "WPILib.h"
+#include <algorithm>
 
 //the threshold of how big our rectangles must be in area to be considered for further testing.
 #define SIZE_THRESHHOLD 500
 
 #define VERTICLE_HEIGHT_TO_WIDTH 2.5 //ratio of height to width in vertical targets
 //TODO: Refine these constants
-#define FOCAL_LENGTH 877.1895 //in px this represents a ratio
-#define VERTICAL_TAPE_WIDTH 2 //in inches
+#define FOCAL_LENGTH 877.1895 //in px this is a calculated number that represents the equivalent "distance" to the target
+#define VERTICAL_TAPE_WIDTH 2 //in inches this is the physical width of the retroreflective tape
 
 using namespace cs;
 using namespace cv;
 using namespace std;
 
-
+//the lastTenSamples vector will become the last ten distance samples, I do this to take a median from the last ten so that
+//outliers don't get returned as real time inputs as distance
 vector<float> lastTenSamples = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
 //an vector of points defining the points of detected rectangles
+//most of the points below will become irrelevant
 vector<vector<Point2f>> points;
 
 static bool visionFlag = false;
@@ -130,6 +134,7 @@ void Vision::setDistance(){
 
 	lastTenSamples.insert(lastTenSamples.begin(), distance);
 	lastTenSamples.pop_back();
+	sort(lastTenSamples.begin(), lastTenSamples.end());
 }
 
 float Vision::getDistance(){
