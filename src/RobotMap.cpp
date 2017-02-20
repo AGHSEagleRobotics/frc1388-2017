@@ -40,6 +40,9 @@ std::shared_ptr<AnalogInput> RobotMap::driveTrainsecondBit;
 std::shared_ptr<AnalogInput> RobotMap::driveTrainthirdBit;
 std::shared_ptr<AnalogInput> RobotMap::driveTrainfourthBit;
 
+std::shared_ptr<ADIS16448_IMU> RobotMap::imu;
+
+
 std::shared_ptr<Relay> RobotMap::visionVisionLight;
 
 void RobotMap::init() {
@@ -125,4 +128,6 @@ void RobotMap::init() {
 
     visionVisionLight.reset(new Relay(0, Relay::kForwardOnly));
     lw->AddActuator("Vision", "VisionLight", visionVisionLight);
+
+    imu.reset(new ADIS16448_IMU());
 }
