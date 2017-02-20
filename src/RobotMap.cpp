@@ -80,14 +80,14 @@ void RobotMap::init() {
     winchWinchMotor.reset(new Spark(4));
     lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<Spark>(winchWinchMotor));
     
-    feederShooterFeedingMotor.reset(new Talon(5));
+    feederShooterFeedingMotor.reset(new Talon(2));
     lw->AddActuator("Feeder", "ShooterFeedingMotor", std::static_pointer_cast<Talon>(feederShooterFeedingMotor));
     
-    shooterShooterEncoder.reset(new Encoder(4, 5, false, Encoder::k4X));
+    shooterShooterEncoder.reset(new Encoder(3, 2, false, Encoder::k4X));
     lw->AddSensor("Shooter", "ShooterEncoder", shooterShooterEncoder);
     shooterShooterEncoder->SetDistancePerPulse(1.3020833);
     shooterShooterEncoder->SetPIDSourceType(PIDSourceType::kRate);
-    shooterShooterMotor.reset(new TalonSRX(2));
+    shooterShooterMotor.reset(new TalonSRX(5));
     lw->AddActuator("Shooter", "ShooterMotor", std::static_pointer_cast<TalonSRX>(shooterShooterMotor));
     
     shooterShooterPID.reset(new PIDController(1.0, 0.0, 0.0,/* F: 0.0, */ shooterShooterEncoder.get(), shooterShooterMotor.get(), 0.02));
@@ -100,7 +100,7 @@ void RobotMap::init() {
     aimerTopLimit.reset(new DigitalInput(7));
     lw->AddSensor("Aimer", "TopLimit", aimerTopLimit);
     
-    aimerAimEncoder.reset(new Encoder(2, 3, false, Encoder::k4X));
+    aimerAimEncoder.reset(new Encoder(4, 5, false, Encoder::k4X));
     lw->AddSensor("Aimer", "AimEncoder", aimerAimEncoder);
     aimerAimEncoder->SetDistancePerPulse(0.001428);
     aimerAimEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);

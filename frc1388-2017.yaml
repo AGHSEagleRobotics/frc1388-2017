@@ -242,7 +242,7 @@ Children:
           default: '0'
           name: Output Channel (PWM)
           validators: *id003
-          value: '5'
+          value: '2'
       Base: Speed Controller
       Name: ShooterFeedingMotor
     Properties:
@@ -269,7 +269,7 @@ Children:
             default: '0'
             name: Channel A Channel (Digital)
             validators: *id006
-            value: '4'
+            value: '3'
           Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
             name: Distance Per Pulse, validators: null, value: 1.3020833}
           PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -291,7 +291,7 @@ Children:
             default: '0'
             name: Channel B Channel (Digital)
             validators: *id010
-            value: '5'
+            value: '2'
         Base: Quadrature Encoder
         Name: ShooterEncoder
       - Children: []
@@ -307,7 +307,7 @@ Children:
             default: '0'
             name: Output Channel (PWM)
             validators: *id003
-            value: '2'
+            value: '5'
         Base: Speed Controller
         Name: ShooterMotor
       Properties:
@@ -397,7 +397,7 @@ Children:
             default: '0'
             name: Channel A Channel (Digital)
             validators: *id006
-            value: '2'
+            value: '4'
           Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
             name: Distance Per Pulse, validators: null, value: 0.001428}
           PID Source: !!robotbuilder.data.properties.ChoicesProperty
@@ -419,7 +419,7 @@ Children:
             default: '0'
             name: Channel B Channel (Digital)
             validators: *id010
-            value: '3'
+            value: '5'
         Base: Quadrature Encoder
         Name: AimEncoder
       - Children: []
