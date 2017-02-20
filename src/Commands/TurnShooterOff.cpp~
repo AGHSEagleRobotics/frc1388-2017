@@ -25,8 +25,9 @@ TurnShooterOff::TurnShooterOff(): Command() {
 
 // Called just before this Command runs the first time
 void TurnShooterOff::Initialize() {
-	Robot::shooter->shootPower = 0.0;
-	RobotMap::shooterShootMotor->Set(0.0);
+	Robot::shooter->shootPower = 0.0; //check this if no work
+	RobotMap::shooterShooterPID->SetSetpoint(0.0);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -41,7 +42,7 @@ bool TurnShooterOff::IsFinished() {
 
 // Called once after isFinished returns true
 void TurnShooterOff::End() {
-
+	RobotMap::shooterShooterPID->Disable();
 }
 
 // Called when another command which requires one or more of the same

@@ -23,10 +23,12 @@ private:
 	static Mat threshold(Mat orig);
 	static void setDistance();
 public:
+	static Mat returnImg();
 	static float getDistance();
 	static float getHorizontalOffset();
 	static bool toggleVisionThread();
 	static void analyzeImage(Mat image);
+	static vector<float> getLastTenSamples();
 	Vision();
 	virtual ~Vision();
 };
