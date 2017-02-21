@@ -32,14 +32,18 @@ void RunWinch::Initialize() {
 void RunWinch::Execute() {
 
 	double input = Robot::oi->getOpStick()->GetY();
+	double output;
+	if (fabs(input) <= DEADBAND) {
+		RobotMap::winchWinchMotor->Set(0);
+	}else if (input > 0) {
+		output = SCALED_SAFETY * (input - DEADBAND) / (1 - DEADBAND);
+	}else if (input < 0) {
+		output = 0;
+		//as to ensure that only forward values are provided to the winch.
+	}
 
-		if (fabs(input) <= DEADBAND) {
-			RobotMap::winchWinchMotor->Set(0);
-		}else if (input > 0) {
-				RobotMap::winchWinchMotor->Set( (input - DEADBAND) / (1 - DEADBAND));
-		}else if (input < 0) {
-				RobotMap::winchWinchMotor->Set( (input + DEADBAND) / (1 - DEADBAND));
-		}
+	RobotMap::winchWinchMotor->Set(output);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()

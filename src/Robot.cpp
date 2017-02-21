@@ -109,6 +109,10 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
+	double shootRate = RobotMap::shooterShooterEncoder->GetRate();
+	double aimPlace = RobotMap::aimerAimEncoder->GetDistance();
+	printf("Shooter Rate: %f RPM      Aimer Position: %f Rotations \n", shootRate, aimPlace);
+
 	Scheduler::GetInstance()->Run();
 }
 
