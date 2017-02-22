@@ -13,6 +13,7 @@
 #include "AutonomousCommand.h"
 #include "AutonDrive.h"
 #include "AutonTurn.h"
+#include "ShooterPresetPower.h"
 #include <math.h>
 #include "Vision.h"
 #define THRESHOLD 0.1
@@ -49,6 +50,7 @@ AutonomousCommand::AutonomousCommand() {
 		theta = (int) atan(DISTALIGN / horizDist);
 		hypVector = sqrt((pow(DISTALIGN, 2)) / (pow(horizDist, 2)));
 
+		AddSequential(new AutonDrive(4));
 		AddSequential(new AutonTurn(theta));
 		AddSequential(new AutonDrive(hypVector));
 		AddSequential(new AutonTurn(-theta));
@@ -71,7 +73,9 @@ AutonomousCommand::AutonomousCommand() {
 		Vision::toggleVisionThread();
 
 		break;
-	case 2:
+
+	case 2: /*right pos, right gear*/
+
 		Vision::toggleVisionThread();
 
 		AddSequential(new AutonDrive(60));
@@ -99,7 +103,8 @@ AutonomousCommand::AutonomousCommand() {
 		Vision::toggleVisionThread();
 
 		break;
-	case 3:
+
+	case 3: /*left pos, left gear*/
 
 		Vision::toggleVisionThread();
 
@@ -129,9 +134,30 @@ AutonomousCommand::AutonomousCommand() {
 
 		break;
 
-	case 4:
+	case 4: /*center pos, shoot*/
 
+		AddSequential(new AutonDrive(3));
+		AddSequential(new AutonTurn(-90));
+		AddSequential(new WaitCommand(2));
+		AddSequential(new AutonDrive(58));
+		AddSequential(new AutonTurn(90));
+		AddSequential(new AutonDrive(400));
+		AddSequential(new AutonTurn(-45));
+		AddSequential(new ShooterPresetPower());
+		break;
 
+	case 5: /*right pos, shoot*/
+
+		AddSequential(new AutonDrive(430));
+		AddSequential(new AutonTurn(-45));
+		AddSequential(new ShooterPresetPower);
+
+		break;
+	case 6:
+
+		AddSequential(new AutonDrive(3));
+		AddSequential(new AutonTurn(-90));
+		AddSequential(new AutonDrive(10 /*some #*/));
 
 		break;
 	}
