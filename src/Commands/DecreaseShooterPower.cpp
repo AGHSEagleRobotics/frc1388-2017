@@ -27,7 +27,7 @@ DecreaseShooterPower::DecreaseShooterPower(): Command() {
 void DecreaseShooterPower::Initialize() {
 	double nextPower = std::max(0.0, Robot::shooter->shootPower - DECREASE);
 	Robot::shooter->shootPower = nextPower;
-	RobotMap::shooterShooterPID->SetSetpoint(RPM_CONVERSION * Robot::shooter->shootPower);
+	RobotMap::shooterShooterPID->SetSetpoint(3200 * Robot::shooter->shootPower);
 }
 
 // Called repeatedly when this Command is scheduled to run

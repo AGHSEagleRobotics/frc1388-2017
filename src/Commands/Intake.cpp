@@ -36,7 +36,7 @@ void Intake::Execute() {
 	if (Robot::oi->getOpStick()->GetRawButton(6)){
 		motorSpeed = motorSpeed * -1;
 	}
-	RobotMap::ballIntakeIntakeMotor->Set(motorSpeed);
+	RobotMap::ballIntakeIntakeMotor->Set(-motorSpeed);
 
 
 }
