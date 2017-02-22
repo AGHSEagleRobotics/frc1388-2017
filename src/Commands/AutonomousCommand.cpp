@@ -44,7 +44,8 @@ AutonomousCommand::AutonomousCommand() {
 
 	case 0: /*do nothing*/
 		break;
-	case 1: /*center pos, center gear, blast*/
+
+	case 1: //center pos, center gear
 		Vision::toggleVisionThread();
 		horizDist = Vision::getHorizontalOffset();
 		theta = (int) atan(DISTALIGN / horizDist);
@@ -74,7 +75,7 @@ AutonomousCommand::AutonomousCommand() {
 
 		break;
 
-	case 2: /*right pos, right gear*/
+	case 2: //right pos, right gear
 
 		Vision::toggleVisionThread();
 
@@ -104,7 +105,7 @@ AutonomousCommand::AutonomousCommand() {
 
 		break;
 
-	case 3: /*left pos, left gear*/
+	case 3: //left pos, left gear
 
 		Vision::toggleVisionThread();
 
@@ -134,7 +135,7 @@ AutonomousCommand::AutonomousCommand() {
 
 		break;
 
-	case 4: /*center pos, shoot*/
+	case 4: //center pos, shoot
 
 		AddSequential(new AutonDrive(3));
 		AddSequential(new AutonTurn(-90));
@@ -146,18 +147,23 @@ AutonomousCommand::AutonomousCommand() {
 		AddSequential(new ShooterPresetPower());
 		break;
 
-	case 5: /*right pos, shoot*/
+	case 5: //right pos, shoot
 
 		AddSequential(new AutonDrive(430));
 		AddSequential(new AutonTurn(-45));
 		AddSequential(new ShooterPresetPower);
 
 		break;
-	case 6:
+
+	case 6: //left pos, shoot
 
 		AddSequential(new AutonDrive(3));
 		AddSequential(new AutonTurn(-90));
-		AddSequential(new AutonDrive(10 /*some #*/));
+		AddSequential(new AutonDrive(116));
+		AddSequential(new AutonTurn(90));
+		AddSequential(new AutonDrive(430));
+		AddSequential(new AutonTurn(-45));
+		AddSequential(new ShooterPresetPower);
 
 		break;
 	}
