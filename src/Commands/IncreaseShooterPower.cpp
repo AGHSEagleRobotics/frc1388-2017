@@ -24,9 +24,12 @@ IncreaseShooterPower::IncreaseShooterPower(): Command() {
 
 // Called just before this Command runs the first time
 void IncreaseShooterPower::Initialize() {
+	if (!RobotMap::shooterShooterPID->IsEnabled()){
+		RobotMap::shooterShooterPID->Enable();
+	}
 	double nextPower = std::min(1.0, Robot::shooter->shootPower + INCREASE);
 	Robot::shooter->shootPower = nextPower;
-	RobotMap::shooterShooterPID->SetSetpoint(RPM_CONVERSION * Robot::shooter->shootPower);
+	RobotMap::shooterShooterPID->SetSetpoint(3200 * Robot::shooter->shootPower);
 }
 
 // Called repeatedly when this Command is scheduled to run

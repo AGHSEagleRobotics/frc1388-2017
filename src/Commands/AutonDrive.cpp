@@ -37,7 +37,7 @@ void AutonDrive::Execute() {
 	double error = m_setPoint - distance;
 
 	double power = (m_setPoint - error) / m_setPoint;
-
+	printf("Power: %f\n", power);
 	RobotMap::driveTrainRobotDrive->TankDrive(power, power);
 
 }

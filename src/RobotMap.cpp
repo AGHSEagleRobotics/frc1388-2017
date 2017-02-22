@@ -83,16 +83,16 @@ void RobotMap::init() {
     feederShooterFeedingMotor.reset(new Spark(2));
     lw->AddActuator("Feeder", "ShooterFeedingMotor", std::static_pointer_cast<Spark>(feederShooterFeedingMotor));
     
-    shooterShooterEncoder.reset(new Encoder(3, 2, false, Encoder::k4X));
+    shooterShooterEncoder.reset(new Encoder(2, 3, false, Encoder::k1X));
     lw->AddSensor("Shooter", "ShooterEncoder", shooterShooterEncoder);
     shooterShooterEncoder->SetDistancePerPulse(1.3020833);
     shooterShooterEncoder->SetPIDSourceType(PIDSourceType::kRate);
     shooterShooterMotor.reset(new TalonSRX(5));
     lw->AddActuator("Shooter", "ShooterMotor", std::static_pointer_cast<TalonSRX>(shooterShooterMotor));
     
-    shooterShooterPID.reset(new PIDController(1.0E-4, 0.0, 0.0,/* F: 0.0, */ shooterShooterEncoder.get(), shooterShooterMotor.get(), 0.02));
+    shooterShooterPID.reset(new PIDController(2.4E-5, 4.0E-6, 0.0,/* F: 0.0, */ shooterShooterEncoder.get(), shooterShooterMotor.get(), 0.02));
     lw->AddActuator("Shooter", "ShooterPID", shooterShooterPID);
-    shooterShooterPID->SetContinuous(false); shooterShooterPID->SetAbsoluteTolerance(100.0); 
+    shooterShooterPID->SetContinuous(false); shooterShooterPID->SetAbsoluteTolerance(10.0); 
         shooterShooterPID->SetOutputRange(-1.0, 1.0);
     aimerBottomLimit.reset(new DigitalInput(6));
     lw->AddSensor("Aimer", "BottomLimit", aimerBottomLimit);
