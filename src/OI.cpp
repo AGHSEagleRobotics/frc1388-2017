@@ -67,12 +67,8 @@ OI::OI() {
     increasePower->WhenPressed(new IncreaseShooterPower());
     rightStick.reset(new Joystick(1));
     
-    rightFireButton.reset(new JoystickButton(rightStick.get(), 1));
-    rightFireButton->WhenPressed(new Fire());
     leftStick.reset(new Joystick(0));
     
-    leftFireButton.reset(new JoystickButton(leftStick.get(), 1));
-    leftFireButton->WhenPressed(new Fire());
     toggleButton.reset(new JoystickButton(leftStick.get(), 2));
     toggleButton->WhenPressed(new ToggleDrive());
 

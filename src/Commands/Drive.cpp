@@ -41,8 +41,12 @@ void Drive::Initialize() {
 void Drive::Execute() {
 	double leftStickY = Deadband(Robot::oi->getLeftStick()->GetY());
 	double rightStickY = Deadband(Robot::oi->getRightStick()->GetY());
-
-	RobotMap::driveTrainRobotDrive->TankDrive(leftStickY, rightStickY, false);
+	if (Robot::driveTrain->isSwitched){
+		RobotMap::driveTrainRobotDrive->TankDrive(leftStickY, rightStickY, false);
+	}
+	else{
+		RobotMap::driveTrainRobotDrive->TankDrive(rightStickY,leftStickY, false);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

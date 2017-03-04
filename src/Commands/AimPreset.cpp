@@ -25,7 +25,7 @@ AimPreset::AimPreset(): Command() {
 // Called just before this Command runs the first time
 void AimPreset::Initialize() {
 	RobotMap::aimerAimerPID->SetSetpoint(PRESET);
-	//RobotMap::aimerAimerPID->Enable();
+	RobotMap::aimerAimerPID->Enable();
 }
 
 // Called repeatedly when this Command is scheduled to run

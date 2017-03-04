@@ -39,15 +39,16 @@ void Aim::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void Aim::Execute() {
-//
-//	double z = Robot::oi->getOpStick()->GetTwist();
-//
-//	if ((RobotMap::aimerBottomLimit && z < 0) || (RobotMap::aimerTopLimit && z > 0)){
-//		RobotMap::aimerAimMotor->Set(0.0);
-//	}
-//	else{
-//		RobotMap::aimerAimMotor->Set(Deadband(z));
-//	}
+
+	double z = Robot::oi->getOpStick()->GetTwist();
+	printf("joystick input: %f \n", z);
+
+	if ((RobotMap::aimerBottomLimit && (z < 0)) || (RobotMap::aimerTopLimit && (z > 0))){
+		RobotMap::aimerAimMotor->Set(0.0);
+	}
+	else{
+		RobotMap::aimerAimMotor->Set(Deadband(z));
+	}
 
 }
 

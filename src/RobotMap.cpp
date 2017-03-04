@@ -104,8 +104,8 @@ void RobotMap::init() {
     lw->AddSensor("Aimer", "AimEncoder", aimerAimEncoder);
     aimerAimEncoder->SetDistancePerPulse(0.001428);
     aimerAimEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);
-    aimerAimMotor.reset(new Talon(0));
-    lw->AddActuator("Aimer", "AimMotor", std::static_pointer_cast<Talon>(aimerAimMotor));
+    aimerAimMotor.reset(new Spark(0));
+    lw->AddActuator("Aimer", "AimMotor", std::static_pointer_cast<Spark>(aimerAimMotor));
     
     aimerAimerPID.reset(new PIDController(0.5, 0.0, 0.0,/* F: 0.0, */ aimerAimEncoder.get(), aimerAimMotor.get(), 0.02));
     lw->AddActuator("Aimer", "AimerPID", aimerAimerPID);
