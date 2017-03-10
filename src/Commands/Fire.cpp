@@ -25,19 +25,24 @@ Fire::Fire(): Command() {
 
 // Called just before this Command runs the first time
 void Fire::Initialize() {
-	//Probably nothing.
-	//Probably.
+	RobotMap::feederShooterFeedingMotor->Set(0.0);
+
 }
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
 	//Run the motors, using a current power constant which is found at Robot::shooter->shootPower
-	RobotMap::feederShooterFeedingMotor->Set(POWER);
+	if (Robot::oi->getLeftStick()->GetRawButton(1) && Robot::oi->getRightStick()->GetRawButton(1)){
+		RobotMap::feederShooterFeedingMotor->Set(POWER);
+	}
+	else{
+		RobotMap::feederShooterFeedingMotor->Set(0.0);
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool Fire::IsFinished() {
-	return !(Robot::oi->getLeftStick()->GetRawButton(2) && Robot::oi->getRightStick()->GetRawButton(1));
+	return false;
     //Check whether both buttons are still pressed.
 }
 

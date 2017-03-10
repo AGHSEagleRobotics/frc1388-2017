@@ -41,7 +41,9 @@ void Aim::Initialize() {
 void Aim::Execute() {
 
 	double z = Robot::oi->getOpStick()->GetTwist();
-	if ((RobotMap::aimerBottomLimit && z < 0) || (RobotMap::aimerTopLimit && z > 0)){
+	printf("joystick input: %f \n", z);
+
+	if ((RobotMap::aimerBottomLimit && (z < 0)) || (RobotMap::aimerTopLimit && (z > 0))){
 		RobotMap::aimerAimMotor->Set(0.0);
 	}
 	else{
