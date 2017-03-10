@@ -35,8 +35,8 @@ void AutonDrive::Execute() {
 
 	double distance = RobotMap::driveTrainRightEncoder->GetDistance();
 	double error = m_setPoint - distance;
-	printf("Error: %f\tDistance: %f\n", error, distance);
-	double power = error / m_setPoint;
+	printf("Distance: %f\n", distance);
+	double power = fmin(1,(error / m_setPoint) + 0.28);
 	printf("Power: %f\n", power);
 	RobotMap::driveTrainRobotDrive->TankDrive(power, power);
 

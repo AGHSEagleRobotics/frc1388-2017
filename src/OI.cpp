@@ -25,6 +25,7 @@
 #include "Commands/RunShooter.h"
 #include "Commands/RunWinch.h"
 #include "Commands/ShooterPresetPower.h"
+#include "Commands/TestAutonomousCommand.h"
 #include "Commands/ToggleDrive.h"
 #include "Commands/TurnIntakeOff.h"
 #include "Commands/TurnShooterOff.h"
