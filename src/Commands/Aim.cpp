@@ -42,7 +42,7 @@ void Aim::Execute() {
 
 	double z = Robot::oi->getOpStick()->GetTwist();
 	double currentDist = RobotMap::aimerAimEncoder->GetDistance();
-	printf("joystick input: %f \n", z);
+//	printf("joystick input: %f \n", z);
 
 	if ((RobotMap::aimerBottomLimit && (z < 0)) || (RobotMap::aimerTopLimit && (z > 0))){
 		RobotMap::aimerAimMotor->Set(0.0);

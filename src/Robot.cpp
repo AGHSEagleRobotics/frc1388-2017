@@ -117,7 +117,7 @@ void Robot::TeleopPeriodic() {
 	double i = RobotMap::shooterShooterPID->GetI();
 	double d = RobotMap::shooterShooterPID->GetD();
 
-	printf("Shooter Rate: %f RPM Shooter Setpoint = %f p:%f i:%f d:%f  \n", shootRate, goal, p,i,d);
+//	printf("Shooter Rate: %f RPM Shooter Setpoint = %f p:%f i:%f d:%f  \n", shootRate, goal, p,i,d);
 
 	Scheduler::GetInstance()->Run();
 }

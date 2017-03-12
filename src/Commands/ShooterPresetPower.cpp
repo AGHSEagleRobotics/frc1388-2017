@@ -25,11 +25,14 @@ ShooterPresetPower::ShooterPresetPower(): Command() {
 
 // Called just before this Command runs the first time
 void ShooterPresetPower::Initialize() {
-	if (!RobotMap::shooterShooterPID->IsEnabled()){
-			RobotMap::shooterShooterPID->Enable();
-	}
-	Robot::shooter->shootPower = PRESET;
-	RobotMap::shooterShooterPID->SetSetpoint(3200 * Robot::shooter->shootPower);
+
+	printf("Shooter preset power (button 3) pressed");
+
+//	if (!RobotMap::shooterShooterPID->IsEnabled()){
+//			RobotMap::shooterShooterPID->Enable();
+//	}
+	RobotMap::shooterShooterMotor->Set(0.5);
+//	RobotMap::shooterShooterPID->SetSetpoint(3200 * Robot::shooter->shootPower);
 }
 
 // Called repeatedly when this Command is scheduled to run

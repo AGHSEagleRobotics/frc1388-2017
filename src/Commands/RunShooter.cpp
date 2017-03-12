@@ -27,8 +27,8 @@ RunShooter::RunShooter(): Command() {
 void RunShooter::Initialize() {
 	//Nothing, probably
 	printf("Initializing Run Shooter");
-	RobotMap::shooterShooterPID->SetSetpoint(Robot::shooter->shootPower * 3200);
-	RobotMap::shooterShooterPID->Reset();
+//	RobotMap::shooterShooterPID->SetSetpoint(Robot::shooter->shootPower * 3200);
+//	RobotMap::shooterShooterPID->Reset();
 
 }
 

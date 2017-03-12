@@ -26,6 +26,9 @@ DecreaseShooterPower::DecreaseShooterPower(): Command() {
 
 // Called just before this Command runs the first time
 void DecreaseShooterPower::Initialize() {
+
+	printf("Decrease shooter power (button 2) pressed");
+
 	double nextPower = std::max(0.0, Robot::shooter->shootPower - DECREASE);
 	Robot::shooter->shootPower = nextPower;
 	RobotMap::shooterShooterPID->SetSetpoint(3200 * Robot::shooter->shootPower);

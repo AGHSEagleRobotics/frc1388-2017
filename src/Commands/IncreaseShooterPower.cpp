@@ -25,6 +25,9 @@ IncreaseShooterPower::IncreaseShooterPower(): Command() {
 
 // Called just before this Command runs the first time
 void IncreaseShooterPower::Initialize() {
+
+	printf("Increase shooter power (button 4) pressed");
+
 	if (!RobotMap::shooterShooterPID->IsEnabled()){
 		RobotMap::shooterShooterPID->Enable();
 	}
