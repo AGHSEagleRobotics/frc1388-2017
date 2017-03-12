@@ -47,11 +47,11 @@ void AutonDrive::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool AutonDrive::IsFinished() {
-	double distance = RobotMap::driveTrainRightEncoder->GetDistance();
-	double error = m_setpoint - distance;
-	if(fabs(m_setpoint - error) <= THRESHOLD){
-		return true;
-	}
+//	double distance = RobotMap::driveTrainRightEncoder->GetDistance();
+//	double error = m_setpoint - distance;
+//	if(fabs(m_setpoint - error) <= THRESHOLD){
+//		return true;
+//	}
     return false;
 }
 

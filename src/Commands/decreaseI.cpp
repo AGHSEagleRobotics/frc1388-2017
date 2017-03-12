@@ -27,7 +27,7 @@ void decreaseI::Initialize() {
 	double p = RobotMap::shooterShooterPID->GetP();
 	double i = RobotMap::shooterShooterPID->GetI();
 	double d = RobotMap::shooterShooterPID->GetD();
-	RobotMap::shooterShooterPID->SetPID(p,i * CHANGE,d);
+//	RobotMap::shooterShooterPID->SetPID(p,i * CHANGE,d);
 }
 
 // Called repeatedly when this Command is scheduled to run
