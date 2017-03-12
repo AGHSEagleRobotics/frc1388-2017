@@ -38,7 +38,7 @@ Rect box1, box2;
 //I don't use port 80 because streaming to a web browser will use port 80
 MjpegServer inputStream("MJPEG Server", 8080);
 //this is the camera itself
-HttpCamera cam("Main Cam", "http://FRC:FRC@10.13.88.97/mjpg/video.mjpg");
+HttpCamera cam("Main Cam", "http://FRC:FRC@10.13.88.12/mjpg/video.mjpg");
 
 //this variable will be the raw image
 Mat img;

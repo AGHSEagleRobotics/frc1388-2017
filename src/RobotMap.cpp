@@ -70,10 +70,10 @@ void RobotMap::init() {
         driveTrainRobotDrive->SetSensitivity(0.5);
         driveTrainRobotDrive->SetMaxOutput(1.0);
 
-    driveTrainRightEncoder.reset(new Encoder(0, 1, false, Encoder::k4X));
+    driveTrainRightEncoder.reset(new Encoder(0, 1, false, Encoder::k1X));
     lw->AddSensor("DriveTrain", "RightEncoder", driveTrainRightEncoder);
     driveTrainRightEncoder->SetDistancePerPulse(0.005236);
-    driveTrainRightEncoder->SetPIDSourceType(PIDSourceType::kRate);
+    driveTrainRightEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);
     ballIntakeIntakeMotor.reset(new Spark(3));
     lw->AddActuator("BallIntake", "IntakeMotor", std::static_pointer_cast<Spark>(ballIntakeIntakeMotor));
     

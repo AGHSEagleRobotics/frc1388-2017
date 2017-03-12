@@ -26,13 +26,21 @@ Fire::Fire(): Command() {
 // Called just before this Command runs the first time
 void Fire::Initialize() {
 	RobotMap::feederShooterFeedingMotor->Set(0.0);
-
+	printf("Fire initialized \n");
 }
 
 // Called repeatedly when this Command is scheduled to run
 void Fire::Execute() {
+
+	if(Robot::oi->getLeftStick()->GetRawButton(1)){
+		printf("Left button triggered \n");
+	}
+	if(Robot::oi->getRightStick()->GetRawButton(1)){
+		printf("Right button triggered \n");
+	}
 	//Run the motors, using a current power constant which is found at Robot::shooter->shootPower
 	if (Robot::oi->getLeftStick()->GetRawButton(1) && Robot::oi->getRightStick()->GetRawButton(1)){
+		printf("Both buttons triggered \n");
 		RobotMap::feederShooterFeedingMotor->Set(POWER);
 	}
 	else{
