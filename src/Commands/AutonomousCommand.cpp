@@ -47,7 +47,7 @@ AutonomousCommand::AutonomousCommand() {
 	switch(choice){
 
 	case 0: /*do nothing*/
-		AddSequential(new AutonTurn(90));
+		//nothing for now
 		break;
 
 	case 1: //center pos, center gear

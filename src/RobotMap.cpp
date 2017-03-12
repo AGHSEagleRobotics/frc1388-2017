@@ -80,7 +80,7 @@ void RobotMap::init() {
     winchWinchMotor.reset(new Spark(4));
     lw->AddActuator("Winch", "WinchMotor", std::static_pointer_cast<Spark>(winchWinchMotor));
     
-    feederShooterFeedingMotor.reset(new Spark(2));
+    feederShooterFeedingMotor.reset(new Spark(1));
     lw->AddActuator("Feeder", "ShooterFeedingMotor", std::static_pointer_cast<Spark>(feederShooterFeedingMotor));
     
     shooterShooterEncoder.reset(new Encoder(2, 3, false, Encoder::k1X));
@@ -104,7 +104,7 @@ void RobotMap::init() {
     lw->AddSensor("Aimer", "AimEncoder", aimerAimEncoder);
     aimerAimEncoder->SetDistancePerPulse(0.001428);
     aimerAimEncoder->SetPIDSourceType(PIDSourceType::kDisplacement);
-    aimerAimMotor.reset(new Spark(0));
+    aimerAimMotor.reset(new Spark(2));
     lw->AddActuator("Aimer", "AimMotor", std::static_pointer_cast<Spark>(aimerAimMotor));
     
     aimerAimerPID.reset(new PIDController(0.5, 0.0, 0.0,/* F: 0.0, */ aimerAimEncoder.get(), aimerAimMotor.get(), 0.02));

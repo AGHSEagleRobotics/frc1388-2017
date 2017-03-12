@@ -35,6 +35,7 @@ void AutonDrive::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void AutonDrive::Execute() {
 
+	printf("Encoder Distance: %f\n", RobotMap::driveTrainRightEncoder->GetDistance());
 	double distance = RobotMap::driveTrainRightEncoder->GetDistance();
 	double error = m_setpoint - distance;
 	printf("Distance: %f\n", distance);
@@ -56,7 +57,7 @@ bool AutonDrive::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonDrive::End() {
-
+	RobotMap::driveTrainRobotDrive->TankDrive(0.0, 0.0);
 }
 
 // Called when another command which requires one or more of the same
